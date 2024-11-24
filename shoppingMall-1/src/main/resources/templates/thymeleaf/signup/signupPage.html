@@ -37,7 +37,8 @@
             <div class="login_in">
                 <!-- login_cont -->
                 <div class="login_cont create_account_step1">
-                <form novalidate="novalidate" autocorrect="off" spellcheck="false" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
+                <form novalidate="novalidate" autocorrect="off" spellcheck="false" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');"
+                action = "../signup/createAccount" type = "post">
                     <fieldset>
                         <legend> 로그인</legend>
                         <h2 class="title">계정만들기</h2>
@@ -79,6 +80,7 @@
                                 <input type="password" id="password2" name="password2" placeholder="암호를 다시 한번 입력해주세요" title="암호재입력" autocorrect="off" spellcheck="false" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" maxlength="128">
                                 <p class="ment ment-password2" style="line-height:27px;height:27px; display:none;"></p>
                             </li>
+                           
                         </ul>
                         <!-- //login_box -->
                         <div class="total_check create_account_step4">
@@ -102,15 +104,7 @@
                     </fieldset>
                 </form>
                 </div>
-                <!-- //login_cont -->
-                <!-- login_txt -->
-                <div class="login_txt pt">
-                    <p><img src="../static/images/contents/logo_login.png" alt="로고"></p>
-                    <!--
-                    <p class="tt">We are all Creators</p>
-                    -->
-                    <p class="tt">PINGPINGI</p>
-                </div>
+                
                 <!-- //login_txt -->
                 </div>
                 <!-- //login_in-->

@@ -232,18 +232,6 @@ jQuery(window).ready(function() {
 			return;
 		}
 		
-		$.ajax({
-			type: "POST",
-			url: "createAccount",
-			data: {"userName": userName, "userID": $('#account').val().trim(), "userPW": md5(password1)},
-			success: function(){
-				
-			},
-			error: function(){
-				alert("서버 오류");
-			}
-			
-				});
 		
 		/*
 		$.getJSON('https://ipapi.co/jsonp?callback=?', function(data){
