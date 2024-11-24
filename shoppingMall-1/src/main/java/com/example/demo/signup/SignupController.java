@@ -1,5 +1,7 @@
 package com.example.demo.signup;
 
+import java.io.Console;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.service.email.EmailSendService;
+import com.example.demo.signup.service.accountRegistService;
 
 @Controller
 @RequestMapping("signup")
@@ -25,12 +28,12 @@ public class SignupController {
 		return "";
 	}
 	
-	@GetMapping("createAccount")
-	public String createAccount1(@RequestParam("userID") String userId) {
-		return "redirect:/";
-	}
+	@Autowired
+	accountRegistService accountRegistService;
+	
 	@PostMapping("createAccount")
-	public String createAccount() {
+	public String createAccount(@RequestParam String name, @RequestParam String password1) {
+		accountRegistService.execute(name, password1);
 		return "redirect:/";
 	}
 }

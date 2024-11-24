@@ -246,6 +246,7 @@ jQuery(window).ready(function() {
 		});
 		*/
 	}
+	/*
 	// Ajax
 	var ajaxSendCertNoEmail = function(email, callback) {
 		webj.ajaxPost('/signup/sendEmail', {email:email}, function(data) {
@@ -271,7 +272,7 @@ jQuery(window).ready(function() {
 	        }
 	    }); 
 	}
-	/*
+	
 	var ajaxCreateAccount = function(param, callback) {
 		$.ajax({
 			type: "POST",

@@ -38,7 +38,7 @@
                 <!-- login_cont -->
                 <div class="login_cont create_account_step1">
                 <form novalidate="novalidate" autocorrect="off" spellcheck="false" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');"
-                action = "../signup/createAccount" type = "post">
+                action = "../signup/createAccount" method = "POST">
                     <fieldset>
                         <legend> 로그인</legend>
                         <h2 class="title">계정만들기</h2>
@@ -99,8 +99,8 @@
                             <label for="c3">문자 수신 동의함 <em class="em">(선택)</em></label></li>
                             <li><input type="checkbox" id="c4" name="choi">
                             <label for="c4">메일링(뉴스레터)서비스 수신 동의함 <em class="em">(선택)</em></label>
-                        </ul>
-                        <div class="right create_account_step5"><a class="btn_m_c1 webj-btn-create-account">계정만들기</a></div>
+                        </ul> <!-- <a class="btn_m_c1 webj-btn-create-account"> </a>-->
+                        <div class="right create_account_step5"><input type = "submit" value = "계정만들기" class = "btn_m_c1"></div>
                     </fieldset>
                 </form>
                 </div>
