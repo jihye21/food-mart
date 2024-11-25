@@ -37,8 +37,8 @@
             <div class="login_in">
                 <!-- login_cont -->
                 <div class="login_cont create_account_step1">
-                <form novalidate="novalidate" autocorrect="off" spellcheck="false" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');"
-                action = "../signup/createAccount" type = "post">
+                <form novalidate="novalidate" autocorrect="off" spellcheck="false" autocomplete="off"
+                action = "../signup/createAccount" method = "post">
                     <fieldset>
                         <legend> 로그인</legend>
                         <h2 class="title">계정만들기</h2>
@@ -49,8 +49,8 @@
                             <li>
                                 <div class="w_box">
                                     <div class="w300">
-                                        <label for="account" class="hidden">이메일인증 계정입력</label>
-                                        <input type="email" id="account" name="account" class="ty" placeholder="이메일을 입력해주세요" title="이메일입력" autocorrect="off" spellcheck="false" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" maxlength="150">
+                                        <label for="email" class="hidden">이메일인증 계정입력</label><!-- readonly onfocus="this.removeAttribute('readonly');" -->
+                                        <input type="email" id="email" name="email" class="email" placeholder="이메일을 입력해주세요" title="이메일입력" autocorrect="off" spellcheck="false" autocomplete="off"  maxlength="150">
                                         <p class="ment" style="line-height:27px;height:27px;">위 이메일로 인증문자가 발송됩니다.</p>
                                     </div>
                                     <div><button class="btn_m2_c5 sendCertNoEmail">인증</button></div>
@@ -65,20 +65,57 @@
                                     <div><button class="btn_m2_c1 webj-btn-cert-email">인증하기</button></div>
                                 </div>
                             </li>
+                            <li>	
+                            	<br>
+                            </li>
                             <li class="create_account_step3">
-                                <label for="name" class="hidden">사용자 이름 입력</label>
-                                <input type="text" id="name" name="name" placeholder="사용자 이름을 입력해주세요" title="사용자이름입력" autocorrect="off" spellcheck="false" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" maxlength="50">
+                            	<b>가입 정보 입력</b>
+                            </li>
+                            <li class="create_account_step3">
+                                <label for="id">아이디</label>
+                                <input type="text" id="id" name="id" placeholder="아이디를 입력해주세요" title="=아이디입력" autocorrect="off" spellcheck="false" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" maxlength="60">
+                                <p class="ment ment-password2" style="line-height:27px;height:27px; display:none;"></p>
+                            </li>
+                            <li class="create_account_step3">
+                                <label for="password">암호 입력</label>
+                                <input type="password" id="password" name="password" placeholder="암호를 입력해주세요" title="암호입력" autocorrect="off" spellcheck="false" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" maxlength="128">
+                                <p class="ment ment-password" style="line-height:27px;height:27px; display:none;"></p>
+                            </li>
+                            <li class="create_account_step3">
+                                <label for="password1">암호 재입력</label>
+                                <input type="password" id="password1" name="password1" placeholder="암호를 다시 한번 입력해주세요" title="암호재입력" autocorrect="off" spellcheck="false" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" maxlength="128">
+                                <p class="ment ment-password1" style="line-height:27px;height:27px; display:none;"></p>
+                            </li>
+                            <li>	
+                            	<br>
+                            </li>
+                            <li class="create_account_step3">
+                            	<b>개인 정보 입력</b>
+                            </li>
+                            <li class="create_account_step3">
+                                <label for="name">사용자 이름 입력</label>
+                                <input type="text" id="name" name="name" placeholder="사용자 이름을 입력해주세요" title="사용자이름입력" autocorrect="off" spellcheck="false" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" maxlength="60">
                                 <p class="ment ment-name" style="line-height:27px;height:27px; display:none;"></p>
                             </li>
                             <li class="create_account_step3">
-                                <label for="password" class="hidden">암호 입력</label>
-                                <input type="password" id="password1" name="password1" placeholder="암호를 입력해주세요" title="암호입력" autocorrect="off" spellcheck="false" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" maxlength="128">
-                                <p class="ment ment-password1" style="line-height:27px;height:27px; display:none;"></p>
+                                <label for="addr">주소 입력</label>
+                                <input type="text" id="addr" name="addr" placeholder="주소를 입력해주세요" title="주소입력" autocorrect="off" spellcheck="false" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" maxlength="128">
+                                <p class="ment ment-name" style="line-height:27px;height:27px; display:none;"></p>
                             </li>
                             <li class="create_account_step3">
-                                <label for="password2" class="hidden">암호 재입력</label>
-                                <input type="password" id="password2" name="password2" placeholder="암호를 다시 한번 입력해주세요" title="암호재입력" autocorrect="off" spellcheck="false" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" maxlength="128">
-                                <p class="ment ment-password2" style="line-height:27px;height:27px; display:none;"></p>
+                                <label for="addrDetail">상세주소 입력</label>
+                                <input type="text" id="addrDetail" name="addrDetail" placeholder="상세주소를 입력해주세요" title="상세주소입력" autocorrect="off" spellcheck="false" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" maxlength="60">
+                                <p class="ment ment-name" style="line-height:27px;height:27px; display:none;"></p>
+                            </li>
+                            <li class="create_account_step3">
+                            	<label for="post">우편주소 입력</label>
+                                <input type="text" id="post" name="post" placeholder="우편번호를 입력해주세요" title="상세주소입력" autocorrect="off" spellcheck="false" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" maxlength="60">
+                                <p class="ment ment-name" style="line-height:27px;height:27px; display:none;"></p>
+                            </li>
+                            <li class="create_account_step3">
+                            	<label for="phone">전화번호 입력</label>
+                                <input type="tel" id = "phone" name="phone" placeholder="전화번호를 입력해주세요" title="전화번호입력" autocorrect="off" spellcheck="false" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" maxlength="60">
+                                <p class="ment ment-name" style="line-height:27px;height:27px; display:none;"></p>
                             </li>
                            
                         </ul>
@@ -99,8 +136,9 @@
                             <label for="c3">문자 수신 동의함 <em class="em">(선택)</em></label></li>
                             <li><input type="checkbox" id="c4" name="choi">
                             <label for="c4">메일링(뉴스레터)서비스 수신 동의함 <em class="em">(선택)</em></label>
-                        </ul>
-                        <div class="right create_account_step5"><a class="btn_m_c1 webj-btn-create-account">계정만들기</a></div>
+                        </ul><!-- <a class="btn_m_c1 webj-btn-create-account"></a> -->
+                        <div class="right create_account_step5">
+                        <input type = "submit" value = "계정만들기"></div>
                     </fieldset>
                 </form>
                 </div>

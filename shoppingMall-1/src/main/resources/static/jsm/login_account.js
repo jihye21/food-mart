@@ -4,25 +4,29 @@ jQuery(window).ready(function() {
 	var isCertEmail = false;
 	
 	//임시 회원가입
-	isCertEmail = true;
+	//isCertEmail = false;
 					$('#certiNum').removeClass('on');
 					$('.create_account_step2').hide();
-					$('.ment').text('이메일 인증이 완료되었습니다.');
+					$('.ment').text('이메일 인증이 필요합니다.');
 					clearInterval(certNoTimeoutInterval);
-					$('.create_account_step3').fadeTo('slow',1);
-					$('.create_account_step4').fadeTo('slow',1);
-					$('.create_account_step5').fadeTo('slow',1);
+					//$('.create_account_step3').fadeTo('slow',1);
+					//$('.create_account_step4').fadeTo('slow',1);
+					//$('.create_account_step5').fadeTo('slow',1);
 	///////////////////
 					
 	var initView = function() {
 		initEvent();
 		$('.create_account_step1').fadeTo('slow',1);
 		if (isApple()) {
-			$('#account').prop('readonly', false);
+			
+			$('#email').prop('readonly', false);
 			$('#certiNum').prop('readonly', false);
 			$('#name').prop('readonly', false);
 			$('#password1').prop('readonly', false);
 			$('#password2').prop('readonly', false);
+			$('#id').prop('readonly', false);
+			$('#addr').prop('readonly', false);
+			$('#addrDetail').prop('readonly', false);
 		}
 	}
 	var initEvent = function() {
@@ -30,26 +34,29 @@ jQuery(window).ready(function() {
 			e.preventDefault();
 			sendCertEmail();
 		});
-		$('#account').keyup(function(e){
+		$('#email').keyup(function(e){
 			e.preventDefault();
-			$('#account').removeClass('on');
+			$('#email').removeClass('on');
 			$('.ment').text('위 이메일로 인증문자가 발송됩니다.');
 			
-			if (!webj.validateEmail($('#account').val().trim())) {
-				$('#account').addClass('on');
+			if (!webj.validateEmail($('#email').val().trim())) {
+				$('#email').addClass('on');
 			}
 			if (e.keyCode == 13) {
-				var email = $('#account').val().trim();
+				var email = $('#email').val().trim();
 				if (webj.isNotEmptyString(email)) {
 					sendCertEmail();	
 				}
 			}
 			
 		});
+		
 		$('.webj-btn-cert-email').click(function(e){
 			e.preventDefault();
-			checkEmailCertNo();
+			//checkEmailCertNo();
 		});
+		
+		/*
 		$('#certiNum').keyup(function(e){
 			e.preventDefault();
 			if (e.keyCode == 13) {
@@ -59,42 +66,43 @@ jQuery(window).ready(function() {
 				}
 			}
 		});
+		*/
 		$('#name').keyup(function(e){
 			e.preventDefault();
 			$('#name').removeClass('on');
 			$('.ment-name').hide();
 		});
-		$('#password1').keyup(function(e){
+		$('#password').keyup(function(e){
 			e.preventDefault();
+			$('#password').removeClass('on');
+			$('.ment-password').hide();
 			$('#password1').removeClass('on');
 			$('.ment-password1').hide();
-			$('#password2').removeClass('on');
-			$('.ment-password2').hide();
-			var validatePasswordResult = webj.validatePassword($('#password1').val().trim());
+			var validatePasswordResult = webj.validatePassword($('#password').val().trim());
 			if (webj.isNotEmptyString(validatePasswordResult) && $(this).val().trim().length > 0) {
-				$('#password1').addClass('on');
-				$('.ment-password1').text('암호를 ' + validatePasswordResult);
-				$('.ment-password1').show();
+				$('#password').addClass('on');
+				$('.ment-password').text('암호를 ' + validatePasswordResult);
+				$('.ment-password').show();
 				return;
 			} else {
-				$('#password1').removeClass('on');
-				$('.ment-password1').text('');
-				$('.ment-password1').hide();
+				$('#password').removeClass('on');
+				$('.ment-password').text('');
+				$('.ment-password').hide();
 			}
 		});
 		$('#password2').keyup(function(e){
 			e.preventDefault();
-			$('#password1').removeClass('on');
+			$('#password').removeClass('on');
+			$('.ment-password').hide();
+			$('#password').removeClass('on');
 			$('.ment-password1').hide();
-			$('#password2').removeClass('on');
-			$('.ment-password2').hide();
-			var validatePasswordResult = webj.validatePassword($('#password1').val().trim());
+			var validatePasswordResult = webj.validatePassword($('#password').val().trim());
 			if (webj.isNotEmptyString(validatePasswordResult)) {
-				$('#password1').addClass('on');
+				$('#password').addClass('on');
 				return;
 			}
-			if ($('#password1').val().trim() != $('#password2').val().trim()) {
-				$('#password2').addClass('on');
+			if ($('#password').val().trim() != $('#password1').val().trim()) {
+				$('#password1').addClass('on');
 			}
 		});
 		$('.webj-btn-create-account').click(function(e){
@@ -116,18 +124,18 @@ jQuery(window).ready(function() {
 	}
 	// Process
 	var sendCertEmail = function() {
-		var email = $('#account').val().trim();
+		var email = $('#email').val().trim();
 		if (webj.isEmptyString(email)) {
-			$('#account').addClass('on');
-			$('#account').val('');
+			$('#email').addClass('on');
+			$('#email').val('');
 			$('.ment').text('이메일 주소를 입력해 주세요.');
-			$('#account').focus();
+			$('#email').focus();
 			return;
 		}
 		if (!webj.validateEmail(email)) {
-			$('#account').addClass('on');
+			$('#email').addClass('on');
 			$('.ment').text('잘못된 형식의 이메일입니다.');
-			$('#account').focus();
+			$('#email').focus();
 			return;
 		}
 		window.webjModalPopup = true;
@@ -161,6 +169,7 @@ jQuery(window).ready(function() {
 			}, 1000);
 		});		
 	}
+	/*
 	var checkEmailCertNo = function() {
 		var email = $('#account').val().trim();
 		var certNo = $('#certiNum').val().trim();
@@ -183,6 +192,8 @@ jQuery(window).ready(function() {
 			}
 		});
 	}
+	*/
+	
 	var createAccount = function() {
 		var userName = $('#name').val().trim();
 		if (webj.isEmptyString(userName)) {
@@ -192,26 +203,26 @@ jQuery(window).ready(function() {
 			$('#name').focus();
 			return;
 		}
+		var password = $('#password').val().trim();
+		if (webj.isEmptyString(password)) {
+			$('#password').addClass('on');
+			$('.ment-password').text('암호를 입력해 주세요.');
+			$('.ment-password').show();
+			$('#password').focus();
+			return;
+		}
 		var password1 = $('#password1').val().trim();
 		if (webj.isEmptyString(password1)) {
 			$('#password1').addClass('on');
-			$('.ment-password1').text('암호를 입력해 주세요.');
+			$('.ment-password1').text('암호확인을 입력해 주세요.');
 			$('.ment-password1').show();
 			$('#password1').focus();
 			return;
 		}
-		var password2 = $('#password2').val().trim();
-		if (webj.isEmptyString(password2)) {
-			$('#password2').addClass('on');
-			$('.ment-password2').text('암호확인을 입력해 주세요.');
-			$('.ment-password2').show();
-			$('#password2').focus();
-			return;
-		}
-		if (password1 != password2) {
-			$('#password1').addClass('on');
-			$('.ment-password1').text('암호가 일치하지 않습니다.');
-			$('.ment-password1').show();
+		if (password != password1) {
+			$('#password').addClass('on');
+			$('.ment-password').text('암호가 일치하지 않습니다.');
+			$('.ment-password').show();
 			return;
 		}
 		var validatePasswordResult = webj.validatePassword(password1);
@@ -246,9 +257,36 @@ jQuery(window).ready(function() {
 		});
 		*/
 	}
+	
+	var ajaxSendCertNoEmail = function(email) {
+	    $.ajax({
+	        type: "POST",
+	        url: "sendEmail",
+	        data: {email: email},
+	        success: function() {
+	            $('#sendEmailProgress').modal({show:false});
+				
+				isCertEmail = true;
+				$('.ment').text('이메일 인증이 완료되었습니다.');
+				$('.sendCertNoEmail').prop('disabled', true);
+				$('.sendCertNoEmail').text('인증완료');
+				$('#email').prop('readonly', true);
+				clearInterval(certNoTimeoutInterval);
+				$('.create_account_step3').fadeTo('slow',1);
+				$('.create_account_step4').fadeTo('slow',1);
+				$('.create_account_step5').fadeTo('slow',1);
+				
+	        },
+	        error: function(error) {
+	            alert("서버 에러: " + error); 
+	        }
+	        
+	    });
+	}
+	/*
 	// Ajax
 	var ajaxSendCertNoEmail = function(email, callback) {
-		webj.ajaxPost('/signup/sendEmail', {email:email}, function(data) {
+		webj.ajaxPost('sendEmail', {email:email}, function(data) {
 	        if (data.result == 'success') {
 	        	if (callback != null) {
 	        		callback();
@@ -260,6 +298,8 @@ jQuery(window).ready(function() {
 	        }
 	    }); 
 	}
+	*/
+	/*
 	var ajaxCheckEmailCertNo = function(email, certNo, callback) {
 		webj.ajaxPost('/login/checkEmailCertNumber', {email:email, certNumber:certNo}, function(data) {
 	        if (data.result == 'success') {
@@ -271,6 +311,7 @@ jQuery(window).ready(function() {
 	        }
 	    }); 
 	}
+	*/
 	/*
 	var ajaxCreateAccount = function(param, callback) {
 		$.ajax({
